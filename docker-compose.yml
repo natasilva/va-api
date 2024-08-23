@@ -2,19 +2,18 @@ version: '3.1'
 
 services:
   va-db:
-    image: mysql:latest
+    image: postgres:latest
     container_name: va-db 
     environment:
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
-      - "3306:3306"
+      - "5432:5432"
     networks:
       - va_network
     volumes:
-      - ./mysql-volume:/var/lib/mysql
+      - ./postgresql-volume:/var/lib/postgresql/data
 
 networks:
   va_network:

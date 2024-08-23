@@ -3,11 +3,11 @@ const db = require('../../config/db');
 class GroupModel  {
     getUserByCnpjf (cnpjf) {
       return new Promise((resolve, reject) => {
-        db.query('SELECT * FROM `group` WHERE cnpjf = ?', [cnpjf], (err, results) => {
+        db.query('SELECT * FROM "group" WHERE cnpjf = $1', [cnpjf], (err, results) => {
           if (err) {
             return reject(err);
           }
-          resolve(results[0]);
+          resolve(results.rows[0]);
         });
       });
     };
